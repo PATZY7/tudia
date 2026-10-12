@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el amor de mi vida - Feliz Día de la Mujer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff758f;
+            --dark: #2b1d24;
+            --light: #fff0f3;
+            --accent: #c9184a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Pétalos cayendo optimizados para móvil */
+        .petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            background: linear-gradient(135deg, #ff758f, #ff4d6d);
+            border-radius: 150% 0 150% 0;
+            animation: fall linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg) translateX(50px);
+                opacity: 0.2;
+            }
+        }
+
+        /* Botón de Música Flotante adaptado para pulgar */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .music-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* Header / Hero Section para Celular */
+        header {
+            min-height: 100vh;
+            background: linear-gradient(rgba(43, 29, 36, 0.65), rgba(43, 29, 36, 0.75)), url('img/foto1.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            color: #ff8fa3;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        header p {
+            font-size: 1.05rem;
+            max-width: 100%;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 25px;
+            color: white;
+            font-size: 1.3rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        /* Secciones generales adaptadas a móvil */
+        section {
+            padding: 3.5rem 1.2rem;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        /* Sección de Homenaje */
+        .woman-tribute {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.1);
+            text-align: center;
+        }
+
+        .woman-tribute i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .woman-tribute h2 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .woman-tribute p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Cartas y Poemas en una columna fluida */
+        .letters-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .letter-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+            border-top: none;
+            text-align: left;
+        }
+
+        .letter-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .letter-card h3 {
+            margin-bottom: 0.6rem;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        .letter-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Galería vertical para celular */
+        .gallery-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 320px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.75));
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Razones por las que te amo en cuadrícula compacta de móvil */
+        .reasons-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .reason-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            text-align: left;
+            gap: 1.2rem;
+        }
+
+        .reason-box i {
+            font-size: 2rem;
+            color: var(--primary);
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .reason-box h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+            color: var(--dark);
+        }
+
+        .reason-box p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Footer Compacto */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor de pétalos flotantes -->
+    <div class="petals-container" id="petals"></div>
+
+    <!-- Botón de música flotante -->
+    <button class="music-btn" id="musicToggle" title="Reproducir música romántica">
+        <i class="fa-solid fa-music"></i>
+    </button>
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Header / Portada -->
+    <header>
+        <h1>Feliz Día, Mi Amor</h1>
+        <p>Eres la mujer más maravillosa, valiente y hermosa de este mundo. Este detalle es para recordarte cuánto te amo.</p>
+        <div class="scroll-down">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- Homenaje -->
+    <section>
+        <div class="woman-tribute">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <h2>Para la reina de mi vida</h2>
+            <p>Hoy se celebra la fuerza, la inteligencia y la bondad de las mujeres, y al pensar en todas esas virtudes, tu nombre es el primero que llega a mi mente. Admiro tu hermosa sonrisa, la manera en que iluminas mis días y el gran corazón que tienes.</p>
+            <p style="font-weight: 600; color: var(--primary);">¡Te amo con toda el alma!</p>
+        </div>
+    </section>
+
+    <!-- Cartas y Poemas -->
+    <section>
+        <h2 class="section-title">Palabras desde el Corazón</h2>
+        <div class="letters-container">
+            <div class="letter-card">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <h3>Carta de Amor</h3>
+                <p>Cada instante a tu lado es un regalo inolvidable. Me haces querer ser una mejor persona cada día y mi lugar favorito en el mundo entero es estar contigo.</p>
+            </div>
+            <div class="letter-card">
+                <i class="fa-solid fa-feather"></i>
+                <h3>Poema Especial</h3>
+                <p>En tus ojos encontré mi paz, en tus labios la felicidad. Eres el sueño hecho realidad que nunca supe que necesitaba, mi compañera y mi verdad.</p>
+            </div>
+            <div class="letter-card">
+                <i class="fa-solid fa-gem"></i>
+                <h3>Mi Promesa</h3>
+                <p>Prometo cuidarte, apoyarte en cada uno de tus sueños y hacerte sonreír todos los días de mi vida. Eres lo más valioso que tengo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería (Fotos y Video) -->
+    <section>
+        <h2 class="section-title">Nuestros Momentos</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="img/foto1.jpg" alt="Foto 1">
+                <div class="gallery-overlay">
+                    <p><i class="fa-solid fa-heart"></i> Tu sonrisa que lo ilumina todo</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/foto2.jpg" alt="Foto 2">
+                <div class="gallery-overlay">
+                    <p><i class="fa-solid fa-heart"></i> Momentos inolvidables juntos</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="img/foto3.jpg" alt="Foto 3">
+                <div class="gallery-overlay">
+                    <p><i class="fa-solid fa-heart"></i> Contigo el tiempo se detiene</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <video controls playsinline>
+                    <source src="img/video1.mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+                <div class="gallery-overlay">
+                    <p><i class="fa-solid fa-video"></i> Un recuerdo en movimiento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Razones -->
+    <section>
+        <h2 class="section-title">¿Por qué te amo?</h2>
+        <div class="reasons-container">
+            <div class="reason-box">
+                <i class="fa-solid fa-sun"></i>
+                <div>
+                    <h4>Tu Sonrisa</h4>
+                    <p>Porque alegra hasta el día más gris.</p>
+                </div>
+            </div>
+            <div class="reason-box">
+                <i class="fa-solid fa-brain"></i>
+                <div>
+                    <h4>Tu Inteligencia</h4>
+                    <p>Admiro cómo superas cada meta.</p>
+                </div>
+            </div>
+            <div class="reason-box">
+                <i class="fa-solid fa-hands-holding-child"></i>
+                <div>
+                    <h4>Tu Ternura</h4>
+                    <p>La forma en que me tratas y cuidas.</p>
+                </div>
+            </div>
+            <div class="reason-box">
+                <i class="fa-solid fa-infinity"></i>
+                <div>
+                    <h4>Simplemente Tú</h4>
+                    <p>Porque eres perfecta para mí.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2>Feliz Día de la Mujer</h2>
+        <p>Hecho con todo mi amor para ti 💖</p>
+    </footer>
+
+    <!-- Script optimizado -->
+    <script>
+        // Generar pétalos con menor cantidad para un rendimiento fluido en celular
+        const petalsContainer = document.getElementById('petals');
+        const petalCount = 18;
+
+        for (let i = 0; i < petalCount; i++) {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            const size = Math.random() * 12 + 8;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size * 1.4}px`;
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.animationDuration = `${Math.random() * 4 + 4}s`;
+            petal.style.animationDelay = `${Math.random() * 5}s`;
+            
+            petalsContainer.appendChild(petal);
+        }
+
+        // Control de música
+        const musicBtn = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
+                musicBtn.style.background = 'var(--primary)';
+            } else {
+                bgMusic.play();
+                musicBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+                musicBtn.style.background = '#28a745';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
